@@ -59,7 +59,7 @@ bool ReadProtoFromBinaryFile(const char* filename, Message* proto) {
     
     ZeroCopyInputStream* raw_input = new FileInputStream(fd);
     CodedInputStream* coded_input = new CodedInputStream(raw_input);
-    coded_input->SetTotalBytesLimit(1073741824, 536870912);
+    coded_input->SetTotalBytesLimit(1573741824, 1036870912);
     
     bool success = proto->ParseFromCodedStream(coded_input);
     
@@ -550,7 +550,7 @@ void convertProtoToLuaV2(const caffe::NetParameter &netparam, const char* lua_na
         lines.emplace_back(layer.name(), "cudnn.SoftMax()");
       else
         lines.emplace_back(layer.name(), "nn.SoftMax()");
-      break;
+      //break;
     }
     if(layer.type()=="Softmax")
     {
@@ -558,7 +558,7 @@ void convertProtoToLuaV2(const caffe::NetParameter &netparam, const char* lua_na
         lines.emplace_back(layer.name(), "cudnn.SoftMax()");
       else
         lines.emplace_back(layer.name(), "nn.SoftMax()");
-      break;
+      //break;
     }
 
     if(!lines.empty())
